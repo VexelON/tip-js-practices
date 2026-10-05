@@ -16,7 +16,7 @@ console.log('sum("4", 6) =', mixedSum, "| тип:", typeof mixedSum);
 console.log("\n--- Эксперимент 2: стрелочная функция с телом в фигурных скобках ---");
 
 const square = (value) => {
-  value * value;
+  return value * value;
 };
 
 const squareResult = square(4);
