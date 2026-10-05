@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ПР3 — Управление задачами</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Управление задачами</h1>
+      <nav class="dataset-nav">
+        <a href="./index.html">Общий набор</a>
+        <a href="./index.html?dataset=variant">Свой вариант</a>
+        <a href="./checks.html">Проверки</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="panel" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Сводка</h2>
+        <dl id="task-summary" class="task-summary">
+          <div><dt>Всего</dt><dd data-stat="total">0</dd></div>
+          <div><dt>Выполнено</dt><dd data-stat="completed">0</dd></div>
+          <div><dt>Осталось</dt><dd data-stat="pending">0</dd></div>
+          <div><dt>Прогресс</dt><dd data-stat="progress">0.0%</dd></div>
+          <div><dt>Показано</dt><dd data-stat="visible">0</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="filters-heading">
+        <h2 id="filters-heading">Фильтры</h2>
+        <div id="task-filters" class="task-filters" role="group" aria-label="Фильтры задач">
+          <button type="button" data-filter="all" class="is-active" aria-pressed="true">
+            <span class="action-label">Все</span>
+          </button>
+          <button type="button" data-filter="pending" aria-pressed="false">
+            <span class="action-label">В работе</span>
+          </button>
+          <button type="button" data-filter="completed" aria-pressed="false">
+            <span class="action-label">Выполненные</span>
+          </button>
+        </div>
+
+        <p class="filters-hint">Дополнительное задание: отбор по приоритету.</p>
+        <div
+          id="priority-filters"
+          class="task-filters"
+          role="group"
+          aria-label="Фильтры по приоритету"
+        >
+          <button type="button" data-priority="all" class="is-active" aria-pressed="true">
+            <span class="action-label">Все приоритеты</span>
+          </button>
+          <button type="button" data-priority="low" aria-pressed="false">
+            <span class="action-label">Низкий</span>
+          </button>
+          <button type="button" data-priority="medium" aria-pressed="false">
+            <span class="action-label">Средний</span>
+          </button>
+          <button type="button" data-priority="high" aria-pressed="false">
+            <span class="action-label">Высокий</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="list-heading">
+        <h2 id="list-heading">Задачи</h2>
+        <p id="operation-message" class="operation-message" role="status" aria-live="polite"></p>
+        <p id="empty-message" class="empty-message" hidden></p>
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+  </body>
+</html>

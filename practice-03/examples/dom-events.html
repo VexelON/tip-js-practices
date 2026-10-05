@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ПР3 — эксперименты с DOM и событиями</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="module" src="./dom-events.js"></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 id="experiment-heading">Эксперименты с DOM и событиями</h1>
+      <p>Результаты выводятся на странице и в консоли DevTools.</p>
+    </header>
+
+    <main class="page-main">
+      <section class="panel">
+        <h2>1–2. Поиск элементов и dataset</h2>
+        <ul id="experiment-list">
+          <li data-task-id="23">
+            <button type="button" id="dataset-button" data-action="delete" data-task-id="23">
+              <span>Прочитать data-task-id</span>
+            </button>
+          </li>
+        </ul>
+        <button type="button" id="missing-button">1. Найти отсутствующий элемент</button>
+      </section>
+
+      <section class="panel">
+        <h2>3. Статическая коллекция</h2>
+        <ul id="items-list">
+          <li class="item">Запись 1</li>
+          <li class="item">Запись 2</li>
+        </ul>
+        <button type="button" id="add-item-button">Добавить запись</button>
+      </section>
+
+      <section class="panel">
+        <h2>4. Текст не равен HTML</h2>
+        <h3 id="changeable-heading">Исходный заголовок</h3>
+        <button type="button" id="change-title-button">Изменить заголовок</button>
+      </section>
+
+      <section class="panel">
+        <h2>5. Захват, цель и всплытие</h2>
+        <ul id="bubbling-list">
+          <li>
+            <button type="button" id="bubbling-button">
+              <span id="bubbling-span">Нажать на этот текст</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Журнал</h2>
+        <button type="button" id="clear-log-button">Очистить</button>
+        <pre id="log" class="log"></pre>
+      </section>
+    </main>
+  </body>
+</html>
