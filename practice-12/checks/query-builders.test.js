@@ -60,3 +60,28 @@ test("PATCH собирает SET в фиксированном порядке н
 test("пустой PATCH отклоняется до SQL", () => {
   assert.throws(() => buildUpdateTaskQuery(4, {}), TypeError);
 });
+
+test("только completed=false в SET", () => {
+  const query = buildUpdateTaskQuery(4, { completed: false });
+  assert.match(query.text, /SET completed = \$1 WHERE id = \$2/);
+  assert.deepEqual(query.values, [false, 4]);
+});
+
+test("фильтр только q", () => {
+  const query = buildListTasksQuery({ completed: null, priority: null, categoryId: null, q: "API" });
+  assert.match(query.text, /ILIKE \$1/);
+  assert.deepEqual(query.values, ["%API%"]);
+});
+
+test("buildGetTaskQuery использует $1", async () => {
+  const { buildGetTaskQuery } = await import("../src/query-builders.js");
+  assert.deepEqual(buildGetTaskQuery(4).values, [4]);
+});
+
+test("buildInsertTaskQuery не передаёт completed", async () => {
+  const { buildInsertTaskQuery } = await import("../src/query-builders.js");
+  const query = buildInsertTaskQuery({ title: "A", priority: "low", categoryId: 2 });
+  assert.equal(query.text.includes("INSERT INTO public.tasks (title, priority, category_id)"), true);
+  assert.deepEqual(query.values, ["A", "low", 2]);
+});
+
