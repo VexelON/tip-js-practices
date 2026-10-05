@@ -1,0 +1,18 @@
+{
+  "name": "practice-10",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "example": "node examples/patch.js",
+    "check:read": "node --test checks/read-unit.test.js checks/read-api.test.js",
+    "check:write": "node --test checks/write-unit.test.js checks/write-api.test.js",
+    "check:integration": "node --test checks/integration.test.js",
+    "test": "node --test checks/read-unit.test.js checks/read-api.test.js checks/write-unit.test.js checks/write-api.test.js checks/integration.test.js"
+  },
+  "dependencies": {
+    "express": "5.1.0"
+  }
+}
